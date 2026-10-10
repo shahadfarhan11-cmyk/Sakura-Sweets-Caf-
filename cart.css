@@ -1,0 +1,344 @@
+/* ==========================================
+   SAKURA SWEETS CAFÉ - CART & FLOATING PANEL
+   ========================================== */
+
+/* 1. الزر العائم للسلة (Floating Action Button) */
+.cart-fab {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  width: 60px;
+  height: 60px;
+  background: var(--pink-dark, #D47A96);
+  color: #fff;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 8px 25px rgba(212, 122, 150, 0.4);
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cart-fab:hover {
+  transform: scale(1.08);
+  background: #be617d;
+}
+
+.fab-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #E84A5F;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 800;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+}
+
+.fab-badge.show {
+  display: flex;
+}
+
+/* 2. الخلفية المعتمة والنافذة المصغرة (Cart Drawer & Overlay) */
+.cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1002;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.cart-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  left: -400px; /* سحب من اليسار */
+  width: 100%;
+  max-width: 380px;
+  height: 100%;
+  background: #fff;
+  z-index: 1003;
+  box-shadow: 10px 0 30px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+}
+
+.cart-drawer.open {
+  left: 0;
+}
+
+body.cart-lock {
+  overflow: hidden;
+}
+
+/* 3. رأس السلة والمحتوى */
+.cart-head {
+  padding: 20px;
+  background: var(--pink-soft, #FFE5EC);
+  border-bottom: 1px solid var(--border-color, #F0D0DB);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-head h2 {
+  font-size: 1.3rem;
+  color: var(--text-dark, #333);
+  margin: 0;
+}
+
+.cart-close {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--pink-dark, #D47A96);
+  padding: 5px;
+}
+
+.cart-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+}
+
+.cart-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #888;
+}
+
+.cart-empty .big {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+/* 4. عناصر القائمة داخل السلة */
+.cart-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px dashed var(--border-color, #F0D0DB);
+}
+
+.cart-row .thumb {
+  width: 45px;
+  height: 45px;
+  background: var(--pink-soft, #FFE5EC);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.cart-row .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+}
+
+.row-info {
+  flex: 1;
+}
+
+.row-info strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-dark, #333);
+}
+
+.row-info small {
+  color: #777;
+  font-size: 0.8rem;
+  display: block;
+}
+
+.row-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.row-total {
+  font-weight: 700;
+  color: var(--pink-dark, #D47A96);
+  font-size: 0.9rem;
+}
+
+.row-del {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  font-size: 0.9rem;
+  padding: 4px;
+  transition: color 0.2s ease;
+}
+
+.row-del:hover {
+  color: #e74c3c;
+}
+
+/* 5. أسفل السلة (المجموع وزر الشراء) */
+.cart-foot {
+  padding: 20px;
+  background: var(--cream-bg, #FFFDF9);
+  border-top: 1px solid var(--border-color, #F0D0DB);
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-dark, #333);
+  margin-bottom: 15px;
+}
+
+.cart-total {
+  color: var(--pink-dark, #D47A96);
+}
+
+.checkout-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 30px;
+  background: var(--pink-dark, #D47A96);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.checkout-btn:hover {
+  background: #be617d;
+}
+
+.checkout-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.cart-note {
+  font-size: 0.75rem;
+  color: #999;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* 6. عناصر التحكم بالكمية داخل بطاقة المنتج (Stepper & Buttons) */
+.cart-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--pink-soft, #FFE5EC);
+}
+
+.stepper {
+  display: inline-flex;
+  align-items: center;
+  background: var(--pink-soft, #FFE5EC);
+  border-radius: 20px;
+  padding: 2px 6px;
+}
+
+.st-btn {
+  background: none;
+  border: none;
+  width: 26px;
+  height: 26px;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--pink-dark, #D47A96);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.st-val {
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0 8px;
+  color: var(--text-dark, #333);
+}
+
+.line-total {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--pink-dark, #D47A96);
+}
+
+.add-btn {
+  background: var(--pink-dark, #D47A96);
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.add-btn:hover {
+  background: #be617d;
+  transform: translateY(-2px);
+}
+
+/* 7. التنبيه المنبثق (Toast) */
+.cart-toast {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background: var(--text-dark, #333);
+  color: #fff;
+  padding: 12px 22px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  z-index: 1005;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.cart-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
