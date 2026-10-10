@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sakura Sweets Café | مقهى الحلويات اليابانية والماتشا</title>
+  <meta name="description" content="مقهى حلويات يابانية مستوحى من أزهار الساكورا يقدم الموتشي، التشيز كيك القطني، والماتشا في أجواء وردية هادئة.">
+  
+  <!-- Font Tajawal -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================
+       CSS VARIABLES & RESET
+       ========================================== */
+    :root {
+      --pink-primary: #F8C8D8;
+      --pink-soft: #FFE5EC;
+      --pink-dark: #D47A96;
+      --cream-bg: #FFFDF9;
+      --cream-card: #FFFFFF;
+      --matcha-green: #8FAF78;
+      --matcha-dark: #587343;
+      --text-dark: #333333;
+      --text-muted: #666666;
+      --border-color: #F0D0DB;
+      --box-shadow: 0 10px 30px rgba(248, 200, 216, 0.25);
+      --box-shadow-hover: 0 15px 35px rgba(212, 122, 150, 0.3);
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: var(--cream-bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+      direction: rtl;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    ul, ol {
+      list-style: none;
+    }
+
+    /* Container Utility */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Section Typography */
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-header .sub-title {
+      color: var(--pink-dark);
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 5px;
+      display: inline-block;
+      background: var(--pink-soft);
+      padding: 4px 16px;
+      border-radius: 20px;
+    }
+
+    .section-header h2 {
+      font-size: 2.2rem;
+      color: var(--text-dark);
+      margin-top: 8px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background-color: var(--pink-dark);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(212, 122, 150, 0.4);
+    }
+
+    .btn-primary:hover {
+      background-color: #be617d;
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      border-color: var(--pink-dark);
+      color: var(--pink-dark);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--pink-soft);
+      transform: translateY(-3px);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .badge-pink {
+      background-color: var(--pink-soft);
+      color: var(--pink-dark);
+    }
+
+    .badge-matcha {
+      background-color: #E8F2E4;
+      color: var(--matcha-dark);
+    }
+
+    /* ==========================================
+       1. ANNOUNCEMENT BAR & HEADER
+       ========================================== */
+    .announcement-bar {
+      background: linear-gradient(90deg, var(--pink-primary), var(--pink-soft));
+      color: var(--text-dark);
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .header-main {
+      position: sticky;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      z-index: 1000;
+      border-bottom: 1px solid var(--pink-soft);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-badge {
+      width: 45px;
+      height: 45px;
+      background-color: var(--pink-soft);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      border: 2px solid var(--pink-dark);
+    }
+
+    .logo-title h1 {
+      font-size: 1.4rem;
+      color: var(--text-dark);
+      line-height: 1.2;
+    }
+
+    .logo-title span {
+      font-size: 0.8rem;
+      color: var(--pink-dark);
+      display: block;
+      letter-spacing: 1px;
+    }
+
+    .nav-menu ul {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-menu a {
+      font-weight: 500;
+      color: var(--text-dark);
+      padding: 5px 10px;
+      border-radius: 8px;
+    }
+
+    .nav-menu a:hover {
+      color: var(--pink-dark);
+      background-color: var(--pink-soft);
+    }
+
+    /* CSS-Only Mobile Toggle Menu */
+    .menu-toggle {
+      display: none;
+    }
+
+    .menu-btn {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text-dark);
+    }
+
+    /* ==========================================
+       2. HERO SECTION
+       ========================================== */
+  /* ==========================================
+       2. HERO SECTION
+       ========================================== */
+    .hero-section {
+      padding: 80px 0 60px;
+      background: radial-gradient(circle at top right, #FFF0F5, var(--cream-bg));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-content {
+      text-align: center; /* توسيص النصوص داخل قسم المحتوى */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-content h2 {
+      font-size: 2.8rem;
+      color: var(--text-dark);
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+
+    .hero-content p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 30px;
+      text-align: center; /* توسيص الفقرة */
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center; /* توسيص الأزرار في المنتصف */
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      text-align: center;
+    }
+
+    .hero-img-box {
+      background-color: var(--pink-soft);
+      border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+      padding: 20px;
+      box-shadow: var(--box-shadow);
+      border: 3px solid #FFF;
+    }
+
+    .hero-img-placeholder {
+      width: 100%;
+      height: 380px;
+      background: linear-gradient(135deg, #FFD1DC, #FFE4E1);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--pink-dark);
+      font-size: 4rem;
+    }
+
+    /* ==========================================
+       3. JAPANESE GATEWAY & WELCOME
+       ========================================== */
+    .japan-gateway {
+      padding: 60px 0;
+      background-color: #FFF;
+      border-top: 1px solid var(--pink-soft);
+      border-bottom: 1px solid var(--pink-soft);
+    }
+
+    .gateway-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .gateway-card {
+      background-color: var(--cream-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 25px;
+      position: relative;
+      box-shadow: var(--box-shadow);
+    }
+
+    .gateway-card .jp-stamp {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      border: 2px solid #C00;
+      color: #C00;
+      padding: 2px 8px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      border-radius: 4px;
+      transform: rotate(-10deg);
+    }
+
+    .gateway-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      color: var(--text-dark);
+    }
+
+    .word-of-day {
+      background-color: var(--pink-soft);
+      padding: 15px;
+      border-radius: var(--radius-sm);
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .word-jp {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--pink-dark);
+      display: block;
+    }
+
+    .word-romaji {
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    /* ==========================================
+       4. ABOUT SECTION
+       ========================================== */
+    .about-section {
+      padding: 80px 0;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-text p {
+      margin-bottom: 20px;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .about-item {
+      background: #FFF;
+      padding: 15px;
+      border-radius: var(--radius-sm);
+      border-right: 4px solid var(--pink-dark);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    .about-item strong {
+      display: block;
+      color: var(--text-dark);
+      margin-bottom: 3px;
+    }
+
+    /* ==========================================
+       5. SPECIAL CAFE FEATURES
+       ========================================== */
+    .features-section {
+      padding: 60px 0 80px;
+      background-color: #FFF;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-card {
+      background: var(--cream-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 30px 20px;
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--pink-dark);
+      box-shadow: var(--box-shadow);
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--pink-soft);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-size: 1.8rem;
+    }
+
+    /* ==========================================
+       6. FEATURED PRODUCTS (3 CARDS WITH BADGES)
+       ========================================== */
+    .featured-section {
+      padding: 80px 0;
+      background-color: var(--pink-soft);
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .featured-card {
+      background: #FFF;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .featured-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--box-shadow-hover);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      z-index: 2;
+    }
+
+    .featured-img-placeholder {
+      height: 220px;
+      background: linear-gradient(45deg, #FFE5EC, #FFF0F5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+    }
+
+    .featured-body {
+      padding: 25px;
+    }
+
+    .featured-body h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .featured-body p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px dashed var(--border-color);
+    }
+
+    .price {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--pink-dark);
+    }
+
+    /* ==========================================
+       7. MENU SECTION (TABBED MENU VIA CSS ONLY)
+       ========================================== */
+    .menu-section {
+      padding: 80px 0;
+    }
+
+    .menu-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      padding: 10px 24px;
+      border-radius: 30px;
+      background-color: #FFF;
+      border: 1px solid var(--border-color);
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .tab-btn:hover {
+      background-color: var(--pink-soft);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .menu-item-card {
+      background: #FFF;
+      border-radius: var(--radius-md);
+      padding: 20px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    .menu-item-card:hover {
+      border-color: var(--pink-dark);
+      box-shadow: var(--box-shadow);
+    }
+
+    .menu-img {
+      height: 160px;
+      background-color: var(--pink-soft);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .menu-info h3 {
+      font-size: 1.15rem;
+      margin-bottom: 5px;
+    }
+
+    .menu-info p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    /* ==========================================
+       8. SWEETS BENTO BOX BUILDER (Interactive Pure CSS)
+       ========================================== */
+    .bento-section {
+      padding: 80px 0;
+      background: linear-gradient(135deg, #FFF8F0, #FFEBF2);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .bento-box-container {
+      background: #FFF;
+      border-radius: var(--radius-lg);
+      padding: 30px;
+      box-shadow: var(--box-shadow);
+      border: 2px solid var(--pink-primary);
+    }
+
+    .bento-grid-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .bento-group h4 {
+      color: var(--pink-dark);
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+      border-bottom: 2px solid var(--pink-soft);
+      padding-bottom: 5px;
+    }
+
+    .bento-option {
+      display: block;
+      background: var(--cream-bg);
+      border: 1px solid var(--border-color);
+      padding: 10px 15px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .bento-option:hover {
+      background: var(--pink-soft);
+    }
+
+    .bento-option input {
+      margin-left: 8px;
+    }
+
+    /* ==========================================
+       9. TEA CEREMONY (Cha-no-yu)
+       ========================================== */
+    .tea-ceremony-section {
+      padding: 80px 0;
+      background-color: #F4F7F2; /* Soft Matcha Tone */
+    }
+
+    .tea-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .tea-step {
+      background: #FFF;
+      padding: 25px;
+      border-radius: var(--radius-md);
+      border-top: 4px solid var(--matcha-green);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    .tea-step-num {
+      width: 35px;
+      height: 35px;
+      background-color: #E8F2E4;
+      color: var(--matcha-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    /* ==========================================
+       10. WISHING TREE (EMA BOARD)
+       ========================================== */
+    .wishing-tree-section {
+      padding: 80px 0;
+      background-image: radial-gradient(var(--pink-soft) 2px, transparent 0);
+      background-size: 30px 30px;
+    }
+
+    .ema-board {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .ema-card {
+      background: #FFF0E5; /* Wooden Board Tone */
+      border: 2px solid #D2B48C;
+      border-radius: var(--radius-sm);
+      padding: 20px 15px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+      clip-path: polygon(15% 0%, 85% 0%, 100% 20%, 100% 100%, 0% 100%, 0% 20%);
+      padding-top: 30px;
+    }
+
+    .ema-card::before {
+      content: '🔴';
+      position: absolute;
+      top: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.8rem;
+    }
+
+    .ema-text {
+      font-style: italic;
+      color: #5c3a21;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .ema-author {
+      font-size: 0.85rem;
+      color: var(--pink-dark);
+      font-weight: 700;
+    }
+
+    /* ==========================================
+       11. GALLERY
+       ========================================== */
+    .gallery-section {
+      padding: 80px 0;
+      background-color: #FFF;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      height: 220px;
+      background: var(--pink-soft);
+    }
+
+    .gallery-img-box {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover .gallery-img-box {
+      transform: scale(1.05);
+    }
+
+    .gallery-item figcaption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: #FFF;
+      padding: 15px;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    /* ==========================================
+       12. REVIEWS & STUDENT ZONE
+       ========================================== */
+    .reviews-section {
+      padding: 80px 0;
+      background-color: var(--cream-bg);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .review-card {
+      background: #FFF;
+      padding: 30px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+    }
+
+    .review-card blockquote {
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 15px;
+    }
+
+    .review-card cite {
+      font-style: normal;
+      font-weight: 700;
+      color: var(--pink-dark);
+      display: block;
+    }
+
+    /* ==========================================
+       13. FAQ (ACCORDIONS VIA PURE DETAILS/SUMMARY)
+       ========================================== */
+    .faq-section {
+      padding: 80px 0;
+      background-color: #FFF;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    details {
+      background-color: var(--cream-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      margin-bottom: 15px;
+      padding: 15px 20px;
+      transition: var(--transition);
+    }
+
+    details[open] {
+      border-color: var(--pink-dark);
+      background-color: #FFF;
+    }
+
+    summary {
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      outline: none;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: '➕';
+      font-size: 0.9rem;
+      color: var(--pink-dark);
+    }
+
+    details[open] summary::after {
+      content: '➖';
+    }
+
+    details p {
+      margin-top: 15px;
+      color: var(--text-muted);
+      border-top: 1px solid var(--pink-soft);
+      padding-top: 12px;
+    }
+
+    /* ==========================================
+       14. INFO SECTION (HOURS & LOCATION)
+       ========================================== */
+    .info-section {
+      padding: 80px 0;
+      background-color: var(--pink-soft);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    .info-card {
+      background: #FFF;
+      padding: 35px;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--box-shadow);
+    }
+
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    .info-table th, .info-table td {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--pink-soft);
+      text-align: right;
+    }
+
+    .info-table th {
+      color: var(--pink-dark);
+      font-weight: 700;
+    }
+
+    /* ==========================================
+       15. RESERVATION & CONTACT FORMS
+       ========================================== */
+    .forms-section {
+      padding: 80px 0;
+      background-color: #FFF;
+    }
+
+    .forms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .form-box {
+      background: var(--cream-bg);
+      padding: 35px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+    }
+
+    .form-box h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--text-dark);
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--text-dark);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.95rem;
+      background: #FFF;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--pink-dark);
+      box-shadow: 0 0 0 3px rgba(212, 122, 150, 0.2);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    /* Fieldset styling */
+    fieldset {
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 15px;
+      margin-bottom: 18px;
+    }
+
+    legend {
+      padding: 0 8px;
+      font-weight: 700;
+      color: var(--pink-dark);
+    }
+
+    /* ==========================================
+       16. NEWSLETTER
+       ========================================== */
+    .newsletter-section {
+      padding: 60px 0;
+      background: linear-gradient(90deg, var(--pink-dark), #b25873);
+      color: #FFF;
+      text-align: center;
+    }
+
+    .newsletter-box {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .newsletter-box h2 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 14px 20px;
+      border-radius: 50px;
+      border: none;
+      font-family: inherit;
+    }
+
+    .newsletter-form button {
+      background-color: var(--text-dark);
+      color: #FFF;
+      border: none;
+      padding: 14px 30px;
+      border-radius: 50px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .newsletter-form button:hover {
+      background-color: #000;
+    }
+
+    /* ==========================================
+       17. FOOTER
+       ========================================== */
+    .footer-main {
+      background-color: var(--text-dark);
+      color: #DDD;
+      padding: 70px 0 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    .footer-col h4 {
+      color: var(--pink-primary);
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col a:hover {
+      color: var(--pink-primary);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-icon:hover {
+      background-color: var(--pink-dark);
+      color: #FFF;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    /* ==========================================
+       RESPONSIVE DESIGN (MEDIA QUERIES)
+       ========================================== */
+
+    /* Tablet Layout (<= 992px) */
+    @media (max-width: 992px) {
+      .hero-grid,
+      .about-grid,
+      .info-grid,
+      .forms-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* Mobile Layout (<= 768px) */
+    @media (max-width: 768px) {
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #FFF;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        padding: 20px;
+        display: none;
+      }
+
+      .menu-toggle:checked ~ .nav-menu {
+        display: block;
+      }
+
+      .nav-menu ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .hero-content h2 {
+        font-size: 2.1rem;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-highlights {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<link rel="stylesheet" href="cart.css">
+<body>
+
+  <!-- ==========================================
+       ANNOUNCEMENT BAR
+       ========================================== -->
+  <aside class="announcement-bar" aria-label="شريط الإعلانات">
+    🎀 عرض اليوم المميز: ساكورا تشيز كيك + آيس ماتشا لاتيه بـ 38 ريال فقط! ✨
+  </aside>
+
+  <link rel="stylesheet" href="polish.css">
+  <link rel="stylesheet" href="cart.css">
+
+  <!-- ==========================================
+       1. HEADER & NAVIGATION
+       ========================================== -->
+  <header class="header-main">
+    <div class="container header-container">
+      <div class="logo-area">
+        <div class="logo-badge" aria-hidden="true">🌸</div>
+        <div class="logo-title">
+          <h1>Sakura Sweets Café</h1>
+          <span>ساكورا سويتس كافيه</span>
+        </div>
+      </div>
+
+      <!-- Pure CSS Mobile Menu Toggle -->
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="قائمة التنقل">
+      <label for="menu-toggle" class="menu-btn" aria-hidden="true">☰</label>
+
+      <nav class="nav-menu" aria-label="القائمة الرئيسية">
+        <ul>
+          <li><a href="#hero">الرئيسية</a></li>
+          <li><a href="#about">قصتنا</a></li>
+          <li><a href="#featured">المميز</a></li>
+          <li><a href="#menu">قائمة الحلويات</a></li>
+          <li><a href="#bento">صندوق البينتو</a></li>
+          <li><a href="#tea-ceremony">حفل الشاي</a></li>
+          <li><a href="#wishing-tree">شجرة الأمنيات</a></li>
+          <li><a href="#contact">حجز وتواصل</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         2. HERO SECTION
+         ========================================== -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="sub-title">🌸 عالم من الحلويات اليابانية اللطيفة</span>
+          <h2>لحظتك الوردية الهادئة تبدأ من هنا</h2>
+          <p>استمتع بألذ الحلويات اليابانية الطازجة والماتشا الأصيلة في أجواء ساحرة ومريحة للدراسة والرخاء، مستوحاة من جمال موسم الساكورا الياباني.</p>
+          <div class="hero-buttons">
+            <a href="#menu" class="btn btn-primary">استعرض القائمة 🍡</a>
+            <a href="#contact" class="btn btn-secondary">احجز طاولتك 🌸</a>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <div class="hero-img-box">
+            <div class="hero-img-placeholder">
+              🍡🌸🍵
+              <span style="font-size: 1rem; margin-top: 10px; color: #587343; font-weight: 700;">Sakura Sweets Experience</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. JAPANESE GATEWAY
+         ========================================== -->
+    <section class="japan-gateway">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title">بوابة اليابان</span>
+          <h2>لمسات ثقافة الساكورا</h2>
+        </div>
+        <div class="gateway-grid">
+          <article class="gateway-card">
+            <span class="jp-stamp">いらっしゃいませ</span>
+            <h3>رسالة ترحيب يابانية</h3>
+            <p>نرحب بكم بعبارة <strong>Irrashaimase</strong> اليابانية التقليدية التي تعبر عن حفاوة الاستقبال والدفء.</p>
+          </article>
+
+          <article class="gateway-card">
+            <span class="jp-stamp">桜の季節</span>
+            <h3>موسم الساكورا (Hanami)</h3>
+            <p>نحتفي بتقليد الـ Hanami السنوي حيث تتفتح أزهار الكرز لتضفي روح البهجة والسلام على كافة أركان مقهانا.</p>
+          </article>
+
+          <article class="gateway-card">
+            <span class="jp-stamp">今日の日本語</span>
+            <h3>كلمة يابانية اليوم</h3>
+            <div class="word-of-day">
+              <span class="word-jp">木漏れ日</span>
+              <span class="word-romaji">Komorebi</span>
+              <p style="font-size: 0.85rem; margin-top: 4px;">ضوء الشمس المتساقط بين أوراق الأشجار الهادئة.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. ABOUT SECTION
+         ========================================== -->
+    <section id="about" class="about-section">
+      <div class="container about-grid">
+        <div class="about-text">
+          <span class="sub-title">قصة المقهى</span>
+          <h2>تأسس Sakura Sweets Café ليجمع بين الجمال والذوق الياباني</h2>
+          <p>تأسس Sakura Sweets Café ليجمع بين جمال أزهار الساكورا والحلويات اليابانية التقليدية. نسعى لتقديم تجربة هادئة ومريحة لعشاق الحلويات والماتشا في أجواء مستوحاة من الثقافة اليابانية الاصيلة.</p>
+          <p>نحن نهتم بأدق التفاصيل من المكونات المستوردة مباشرة من كيوتو إلى الديكورات الوردية الهادئة لتوفير مساحة مثالية للاسترخاء والعمل والدراسة.</p>
+          
+          <div class="about-highlights">
+            <div class="about-item">
+              <strong>سنة التأسيس:</strong>
+              <span>2026 م</span>
+            </div>
+            <div class="about-item">
+              <strong>سر الاسم:</strong>
+              <span>مستوحى من أزهار الكرز اليابانية الرقيقة.</span>
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          <div class="hero-img-placeholder" style="background: linear-gradient(135deg, #FFE5EC, #FFF8F0); height: 320px; border-radius: var(--radius-lg);">
+            🍰🌸🍵
+            <span style="font-size: 1rem; color: var(--pink-dark); margin-top: 10px;">أجواء هادئة وورديّة</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. WHY CHOOSE US (FEATURES)
+         ========================================== -->
+    <section class="features-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title">مميزاتنا الخاصة</span>
+          <h2>لماذا تختار Sakura Sweets Café؟</h2>
+        </div>
+        <div class="features-grid">
+          <article class="feature-card">
+            <div class="feature-icon">📸</div>
+            <h3>ركن تصوير بورد الساكورا</h3>
+            <p>زاوية مصممة خصيصاً لالتقاط أجمل الصور التذكارية وسط أزهار الساكورا الورديّة.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🎁</div>
+            <h3>هدايا يابانية صغيرة</h3>
+            <p>قسم مخصص لبيع التذكارات والهدايا اليابانية اللطيفة والأدوات الرسمية للماتشا.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">📚</div>
+            <h3>ركن الكتب والثقافة</h3>
+            <p>مكتبة تضم مجموعة مختارة من الكتب والمجلات حول الفن والثقافة اليابانية.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">💻</div>
+            <h3>بيئة دراسة هادئة</h3>
+            <p>مقابس كهرباء متوفرة في كافة الطاولات مع واي فاي سريع مجاني ومناسب للعمل.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🍵</div>
+            <h3>ماتشا يابانية فاخرة</h3>
+            <p>نستخدم أجود أنواع الماتشا المستوردة درجة احتفالية (Ceremonial Grade).</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">🎓</div>
+            <h3>خصومات للطلاب</h3>
+            <p>خصم خاص 15% للطلاب عند تقديم البطاقة الجامعية أو المدرسية.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         6. FEATURED PRODUCTS (3 CARDS WITH BADGES)
+         ========================================== -->
+    <section id="featured" class="featured-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title">اختيارات مميزة</span>
+          <h2>المنتجات الأكثر طلباً هذا الشهر</h2>
+        </div>
+        <div class="featured-grid">
+          
+          <!-- Card 1 -->
+          <article class="featured-card">
+            <span class="featured-badge badge badge-pink">🌸 حلى الأسبوع</span>
+            <div class="featured-img-placeholder">🍰</div>
+            <div class="featured-body">
+              <h3>Sakura Cheesecake</h3>
+              <p>تشيز كيك ياباني خفيف وقطني مزين بأزهار الساكورا الطبيعية المحلاة مع طبق جيلي زهر الكرز.</p>
+              <div class="price-row">
+                <span class="price">28 ر.س</span>
+                <span class="badge badge-pink">موسمي طازج</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="featured-card">
+            <span class="featured-badge badge badge-pink">🍡 الأكثر طلباً</span>
+            <div class="featured-img-placeholder">🍓</div>
+            <div class="featured-body">
+              <h3>Strawberry Mochi</h3>
+              <p>موتشي ياباني طري وطازج محشو بالكريمة الخفيفة وحبة فراولة كاملة طازجة.</p>
+              <div class="price-row">
+                <span class="price">18 ر.س</span>
+                <span class="badge badge-pink">صنع يدوي</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="featured-card">
+            <span class="featured-badge badge badge-matcha">🍵 مشروب الشهر</span>
+            <div class="featured-img-placeholder">🧊</div>
+            <div class="featured-body">
+              <h3>Iced Matcha Latte</h3>
+              <p>مشروب ماتشا مثلج فاخر ومخفوق بالكريمة مع الحليب والمذاق الياباني الأصيل المنعش.</p>
+              <div class="price-row">
+                <span class="price">24 ر.س</span>
+                <span class="badge badge-matcha">Matcha Grade A</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         7. MENU SECTION
+         ========================================== -->
+    <section id="menu" class="menu-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title">قائمة الطعام كاملة</span>
+          <h2>حلويات ومشروبات Sakura Sweets</h2>
+        </div>
+
+        <!-- Menu Categories Grid -->
+        <h3 style="margin-bottom: 20px; color: var(--pink-dark); border-right: 4px solid var(--pink-dark); padding-right: 10px;">🍡 الحلويات اليابانية (Japanese Sweets)</h3>
+        <div class="menu-grid" style="margin-bottom: 40px;">
+          <article class="menu-item-card">
+            <div class="menu-img">🍡</div>
+            <div class="menu-info">
+              <h3>موتشي بالفراولة</h3>
+              <p>موتشي ياباني محشو بحبة فراولة طازجة وكريمة أزهار الساكورا.</p>
+            </div>
+            <div class="price-row"><span class="price">18 ر.س</span></div>
+          </article>
+
+          <article class="menu-item-card">
+            <div class="menu-img">🥞</div>
+            <div class="menu-info">
+              <h3>دوراياكي (Dorayaki)</h3>
+              <p>بان كيك ياباني مزدوج محشو بمعجون الفاصولياء الحمراء الحلوة (Anko).</p>
+            </div>
+            <div class="price-row"><span class="price">20 ر.س</span></div>
+          </article>
+
+          <article class="menu-item-card">
+            <div class="menu-img">🧀</div>
+            <div class="menu-info">
+              <h3>تشيز كيك ياباني قطني</h3>
+              <p>تشيز كيك ياباني خفيف وقوام هبّاش يذوب في الفم.</p>
+            </div>
+            <div class="price-row"><span class="price">26 ر.س</span></div>
+          </article>
+
+          <article class="menu-item-card">
+            <div class="menu-img">🍡</div>
+            <div class="menu-info">
+              <h3>دانغو (Dango)</h3>
+              <p>كرات الأرز اليابانية المطهوة بالبخار والمغطاة بصلصة الشويا الحلوة.</p>
+            </div>
+            <div class="price-row"><span class="price">16 ر.س</span></div>
+          </article>
+
+          <article class="menu-item-card">
+            <div class="menu-img">🐟</div>
+            <div class="menu-info">
+              <h3>تاياكي (Taiyaki)</h3>
+              <p>كعكة يابانية على شكل سمكة محشوة بالكاسترد أو الماتشا.</p>
+            </div>
+            <div class="price-row"><span class="price">19 ر.س</span></div>
+          </article>
+
+          <article class="menu-item-card">
+            <div class="menu-img">🍰</div>
+            <div class="menu-info">
+              <h3>كعكة الماتشا</h3>
+              <p>كيكة إسفنجية خفيفة بطبقات كريمية ممزوجة بالماتشا الفاخرة.</p>
+            </div>
+            <div class="price-row"><span class="price">25 ر.س</span></div>
+          </article>
+
+          <article class="menu-item-card">
+            <div class="menu-img">🌸</div>
+            <div class="menu-info">
+              <h3>ساكورا تشيز كيك</h3>
+              <p>التشيز كيك الخاص بالمقهى مع نكهة زهر الكرز الياباني.</p>
+            </div>
+            <div class="price-row"><span class="price">28 ر.س</span></div>
+          </article>
+        </div>
+
+        <h3 style="margin-bottom: 20px; color: var(--matcha-dark); border-right: 4px solid var(--matcha-green); padding-right: 10px;">🍵 الماتشا والشاي (Matcha & Tea)</h3>
+        <div class="menu-grid" style="margin-bottom: 40px;">
+          <article class="menu-item-card">
+            <div class="menu-img">🍵</div>
+            <div class="menu-info">
+              <h3>ماتشا لاتيه دافئ</h3>
+              <p>ماتشا يابانية دافئة مخفوقة بالحليب المبخر ورغوة حليب ناعمة.</p>
+            </div>
+            <div class="price-row"><span class="price">22 ر.س</span></div>
+          </article>
+
+          <article class="menu-item-card">
+            <div class="menu-img">🧊</div>
+            <div class="menu-info">
+              <h3>آيس ماتشا لاتيه</h3>
+              <p>ماتشا مثلجة منعشة تحضر طازجة يومياً.</p>
+            </div>
+            <div class="price-row"><span class="price">24 ر.س</span></div>
+          </article>
+
+          <article class="menu-item-card">
+            <div class="menu-img">🌸</div>
+            <div class="menu-info">
+              <h3>شاي الساكورا</h3>
+              <p>شاي ياباني معطر بأوراق وزهر الساكورا الطبيعية.</p>
+            </div>
+            <div class="price-row"><span class="price">20 ر.س</span></div>
+          </article>
+
+          <article class="menu-item-card">
+            <div class="menu-img">☕</div>
+            <div class="menu-info">
+              <h3>شاي ياسمين ياباني</h3>
+              <p>شاي أخضر معطر بأزهار الياسمين الهادئة.</p>
+            </div>
+            <div class="price-row"><span class="price">18 ر.س</span></div>
+          </article>
+
+          <article class="menu-item-card">
+            <div class="menu-img">🍑</div>
+            <div class="menu-info">
+              <h3>شاي خوخ مثلج</h3>
+              <p>مشروب شاي مثلج بنكهة الخوخ الياباني الطبيعي.</p>
+            </div>
+            <div class="price-row"><span class="price">20 ر.س</span></div>
+          </article>
+
+          <article class="menu-item-card">
+            <div class="menu-img">🍫</div>
+            <div class="menu-info">
+              <h3>هوت شوكليت وردي</h3>
+              <p>شوكولاتة بيضاء دافئة بنكهة ورائحة الساكورا الوردية.</p>
+            </div>
+            <div class="price-row"><span class="price">23 ر.س</span></div>
+          </article>
+        </div>
+
+        <h3 style="margin-bottom: 20px; color: var(--pink-dark); border-right: 4px solid var(--pink-dark); padding-right: 10px;">🍓 الحلويات الخاصة (Signature Desserts)</h3>
+        <div class="menu-grid">
+          <article class="menu-item-card">
+            <div class="menu-img">🥞</div>
+            <div class="menu-info">
+              <h3>Sakura Pancake</h3>
+              <p>بان كيك ياباني منفوخ ومزين بقطع الفراولة وصوص الساكورا الوردي.</p>
+            </div>
+            <div class="price-row"><span class="price">32 ر.س</span></div>
+          </article>
+
+          <article class="menu-item-card">
+            <div class="menu-img">🍰</div>
+            <div class="menu-info">
+              <h3>Strawberry Mille Crepe</h3>
+              <p>طبقات الكريب الفرنسية اليابانية النحيفة جداً مع كريمة الفراولة.</p>
+            </div>
+            <div class="price-row"><span class="price">30 ر.س</span></div>
+          </article>
+
+          <article class="menu-item-card">
+            <div class="menu-img">🍨</div>
+            <div class="menu-info">
+              <h3>Sakura Parfait</h3>
+              <p>كأس البارفيه الياباني المكون من الموتشي، آيس كريم الماتشا، والساكورا.</p>
+            </div>
+            <div class="price-row"><span class="price">35 ر.س</span></div>
+          </article>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         8. BENTO BOX CUSTOMIZER (SWEETS BENTO)
+         ========================================== -->
+    <section id="bento" class="bento-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title">تخصيص صندوق الحلويات</span>
+          <h2>🍱 بناء صندوق البينتو للحلويات (Sweets Bento Box)</h2>
+          <p>اختر مكونات صندوق البينتو الوردي الخاص بك والمكون من 3 أقسام لمشاركتها مع من تحب.</p>
+        </div>
+
+        <div class="bento-box-container">
+          <form onsubmit="return false;">
+            <div class="bento-grid-options">
+              
+              <div class="bento-group">
+                <h4>1. نوع الموتشي (Mochi)</h4>
+                <label class="bento-option">
+                  <input type="radio" name="mochi" checked> موتشي فراولة 🍓
+                </label>
+                <label class="bento-option">
+                  <input type="radio" name="mochi"> موتشي ماتشا 🍵
+                </label>
+                <label class="bento-option">
+                  <input type="radio" name="mochi"> موتشي المانجو 🥭
+                </label>
+              </div>
+
+              <div class="bento-group">
+                <h4>2. الحلوى الرئيسية (Main Sweets)</h4>
+                <label class="bento-option">
+                  <input type="radio" name="main_sweet" checked> ساكورا تشيز كيك 🍰
+                </label>
+                <label class="bento-option">
+                  <input type="radio" name="main_sweet"> دوراياكي بالفاصولياء 🥞
+                </label>
+                <label class="bento-option">
+                  <input type="radio" name="main_sweet"> تاياكي بالكاسترد 🐟
+                </label>
+              </div>
+
+              <div class="bento-group">
+                <h4>3. المشروب المرفق (Drink)</h4>
+                <label class="bento-option">
+                  <input type="radio" name="bento_drink" checked> آيس ماتشا لاتيه 🧊
+                </label>
+                <label class="bento-option">
+                  <input type="radio" name="bento_drink"> شاي ساكورا الدافئ 🌸
+                </label>
+                <label class="bento-option">
+                  <input type="radio" name="bento_drink"> شاي خوخ مثلج 🍑
+                </label>
+              </div>
+
+            </div>
+
+            <div style="text-align: center; margin-top: 30px;">
+              <button class="btn btn-primary" type="button">طلب صندوق البينتو الخاص (55 ريال)</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         9. TEA CEREMONY (CHA-NO-YU)
+         ========================================== -->
+    <section id="tea-ceremony" class="tea-ceremony-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title">الطقوس اليابانية</span>
+          <h2>🍵 حفل الشاي والماتشا الياباني (Cha-no-yu)</h2>
+          <p>نحرص في Sakura Sweets على تقديم الماتشا طبقاً للطقوس اليابانية التقليدية الهادئة.</p>
+        </div>
+
+        <div class="tea-grid">
+          <div class="tea-step">
+            <div class="tea-step-num">1</div>
+            <h3>اختيار مسحوق الماتشا</h3>
+            <p>نستخدم أوراق الشاي الخضراء المطحونة بعناية درجة Uji الفاخرة من كيوتو.</p>
+          </div>
+
+          <div class="tea-step">
+            <div class="tea-step-num">2</div>
+            <h3>التسخين والماء</h3>
+            <p>تسخين درجة حرارة الماء إلى 80 درجة مئوية بالضبط للحفاظ على الفوائد والنكهة.</p>
+          </div>
+
+          <div class="tea-step">
+            <div class="tea-step-num">3</div>
+            <h3>الخفق بفرشاة Chasen</h3>
+            <p>خفق الشاي بفرشاة الخيزران التقليدية بحركات سريعة للحصول على رغوة مخملية.</p>
+          </div>
+
+          <div class="tea-step">
+            <div class="tea-step-num">4</div>
+            <h3>التقديم بكل احترام</h3>
+            <p>تقديم الشاي في وعاء الـ Chawan الفخاري بكلا اليدين تعبيراً عن التقدير للزائر.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         10. WISHING TREE (EMA BOARD)
+         ========================================== -->
+    <section id="wishing-tree" class="wishing-tree-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title">شجرة الأمنيات (Ema - 絵馬)</span>
+          <h2>شاركونا أمنياتكم الوردية</h2>
+          <p>اترك أمنيتك مكتوبة على لوحات الإيما الخشبية لتعليقها في ركن الساكورا الخاص بالمقهى.</p>
+        </div>
+
+        <div class="ema-board">
+          <div class="ema-card">
+            <p class="ema-text">"أتمنى النجاح والتوفيق في هذا الفصل الدراسي والاستمتاع بالماتشا دائماً!"</p>
+            <span class="ema-author">- سارة م.</span>
+          </div>
+
+          <div class="ema-card">
+            <p class="ema-text">"أن أزور اليابان في موسم تفتح أزهار الساكورا العام القادم 🌸"</p>
+            <span class="ema-author">- نورة علي</span>
+          </div>
+
+          <div class="ema-card">
+            <p class="ema-text">"أفضل موتشي جربته في الرياض، مكان رايق جداً للدراسة."</p>
+            <span class="ema-author">- أحمد خالد</span>
+          </div>
+        </div>
+
+        <!-- Submit Wish Form -->
+        <div style="max-width: 500px; margin: 30px auto 0; background: #FFF; padding: 20px; border-radius: var(--radius-md); box-shadow: var(--box-shadow);">
+          <form onsubmit="return false;">
+            <div class="form-group">
+              <label for="wish-input">اكتب أمنيتك وتعليقك:</label>
+              <input type="text" id="wish-input" class="form-control" placeholder="أمنيتك الوردية..." required>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;">علّق أمنيتك على الشجرة 🌸</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         11. GALLERY SECTION
+         ========================================== -->
+    <section class="gallery-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title">معرض الصور</span>
+          <h2>أجواء المقهى والحلويات</h2>
+        </div>
+
+        <div class="gallery-grid">
+          <figure class="gallery-item">
+            <div class="gallery-img-box">🌸</div>
+            <figcaption>ركن التصوير الوردي بأزهار الساكورا</figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <div class="gallery-img-box">💻</div>
+            <figcaption>منطقة الدراسة والعمل الهادئة</figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <div class="gallery-img-box">🍡</div>
+            <figcaption>الحلويات اليابانية الطازجة</figcaption>
+          </figure>
+
+          <figure class="gallery-item">
+            <div class="gallery-img-box">🍵</div>
+            <figcaption>تحضير الماتشا بالأسلوب التقليدي</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         12. STUDENT ZONE & REVIEWS
+         ========================================== -->
+    <section class="reviews-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title">آراء زوارنا</span>
+          <h2>ماذا يقول أصدقاء Sakura Sweets؟</h2>
+        </div>
+
+        <div class="reviews-grid">
+          <article class="review-card">
+            <blockquote>"الأجواء هادئة جداً ولطيفة، والماتشا لاتيه لديهم من أفضل ما ذقت في الرياض. المكان ممتاز للدراسة والتركيز."</blockquote>
+            <cite>- ريم الحمد</cite>
+          </article>
+
+          <article class="review-card">
+            <blockquote>"التشيز كيك الساكورا خفيف ولذيذ، وركن الكتب اليابانية أضاف تجربة فريدة جداً لم أجدها في مقهى آخر."</blockquote>
+            <cite>- فيصل الشمري</cite>
+          </article>
+
+          <article class="review-card">
+            <blockquote>"خدمة سريعة ولطيفة، والموتشي بالفراولة طازج جداً. أنصح بزيارته في فترة الظهيرة للهدوء."</blockquote>
+            <cite>- أروى عبد الله</cite>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         13. FAQ (ACCORDION WITH DETAILS/SUMMARY)
+         ========================================== -->
+    <section class="faq-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="sub-title">الأسئلة الشائعة</span>
+          <h2>إجابات لأسئلتكم المتكررة</h2>
+        </div>
+
+        <div class="faq-container">
+          <details>
+            <summary>هل يتوفر حجز مسبق للطاولات؟</summary>
+            <p>نعم، يمكنك الحجز المسبق عبر النموذج المتاح في الموقع أو عبر التواصل المباشر مع المقهى لضمان توفر الطاولة.</p>
+          </details>
+
+          <details>
+            <summary>هل يتوفر واي فاي ومقابس كهربائية للدراسة؟</summary>
+            <p>بالتأكيد! نرحب بكافة الطلاب وصناع المحتوى، وتتوفر مقابس كهربائية بجوار جميع الطاولات مع واي فاي سريع مجاني.</p>
+          </details>
+
+          <details>
+            <summary>هل تتوفر خيارات نباتية (Vegan) ومشروبات بدون ألبان؟</summary>
+            <p>نعم، نوفر خيارات حليب الشوفان وحليب اللوز لجميع مشروبات الماتشا والشاي، بالإضافة لبعض الحلويات النباتية.</p>
+          </details>
+
+          <details>
+            <summary>هل المقهى مناسب للعائلات والأطفال؟</summary>
+            <p>نعم، المقهى يوفر جلسات مريحة وهادئة تناسب الأفراد والعائلات مع تجربة يابانية ممتعة للجميع.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         14. OPENING HOURS & LOCATION
+         ========================================== -->
+    <section class="info-section">
+      <div class="container info-grid">
+        <div class="info-card">
+          <h3 style="color: var(--pink-dark); margin-bottom: 15px;">🕒 أوقات العمل</h3>
+          <p>نرحب بكم خلال الأوقات التالية:</p>
+          <table class="info-table">
+            <thead>
+              <tr>
+                <th>الأيام</th>
+                <th>أوقات العمل</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>الأحد - الخميس</td>
+                <td>7:00 صباحاً - 11:00 مساءً</td>
+              </tr>
+              <tr>
+                <td>الجمعة - السبت</td>
+                <td>8:00 صباحاً - 12:00 منتصف الليل</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="info-card">
+          <h3 style="color: var(--pink-dark); margin-bottom: 15px;">📍 موقعنا وتواصلنا</h3>
+          <p>تفضل بزيارتنا في فرعنا المميز:</p>
+          <address style="font-style: normal; margin-top: 15px; line-height: 1.8;">
+            📍 شارع الساكورا، حي الربيع، الرياض، المملكة العربية السعودية<br>
+            📞 الهاتف: <a href="tel:0500000000" style="color: var(--pink-dark); font-weight: 700;">0500000000</a><br>
+            ✉️ البريد: <a href="mailto:hello@sakurasweets.com" style="color: var(--pink-dark); font-weight: 700;">hello@sakurasweets.com</a>
+          </address>
+          <div style="margin-top: 20px;">
+            <a href="https://maps.google.com" target="_blank" class="btn btn-secondary" style="font-size: 0.9rem; padding: 8px 18px;">فتح الخريطة عبر Google Maps 🗺️</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         15. RESERVATION & CONTACT FORMS
+         ========================================== -->
+    <section id="contact" class="forms-section">
+      <div class="container forms-grid">
+        
+        <!-- Reservation Form -->
+        <div class="form-box">
+          <h3>🌸 طلب حجز طاولة</h3>
+          <form action="#" method="POST">
+            <div class="form-group">
+              <label for="res-date">التاريخ:</label>
+              <input type="date" id="res-date" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="res-time">الوقت:</label>
+              <input type="time" id="res-time" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+              <label for="res-guests">عدد الأشخاص:</label>
+              <select id="res-guests" class="form-control" required>
+                <option value="1">شخص واحد</option>
+                <option value="2" selected>شخصان</option>
+                <option value="3-4">3 إلى 4 أشخاص</option>
+                <option value="5+">مجموعة (5 فأكثر)</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">تأكيد طلب الحجز 🌸</button>
+            <p class="form-note">* ملاحظة: هذا نموذج حجز تجريبي للعرض الأكاديمي.</p>
+          </form>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="form-box">
+          <h3>💌 تواصل معنا</h3>
+          <form action="#" method="POST">
+            <div class="form-group">
+              <label for="full-name">الاسم الكامل:</label>
+              <input type="text" id="full-name" class="form-control" placeholder="مثال: سارة أحمد" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">البريد الإلكتروني:</label>
+              <input type="email" id="email" class="form-control" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="phone">رقم الجوال:</label>
+              <input type="tel" id="phone" class="form-control" placeholder="05xxxxxxxx" required>
+            </div>
+
+            <fieldset>
+              <legend>طريقة التواصل المفضلة</legend>
+              <label style="font-weight: normal; margin-left: 15px;"><input type="radio" name="pref_contact" checked> بريد إلكتروني</label>
+              <label style="font-weight: normal;"><input type="radio" name="pref_contact"> واتساب</label>
+            </fieldset>
+
+            <div class="form-group">
+              <label for="message">الرسالة:</label>
+              <textarea id="message" class="form-control" placeholder="استفسارك أو اقتراحك..." required></textarea>
+            </div>
+
+            <div class="form-group" style="display: flex; align-items: center; gap: 8px;">
+              <input type="checkbox" id="privacy" required>
+              <label for="privacy" style="font-size: 0.85rem; font-weight: normal;">أوافق على سياسة الخصوصية واستخدام البيانات للتواصل.</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%;">إرسال الرسالة ✉️</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         16. NEWSLETTER
+         ========================================== -->
+    <section class="newsletter-section">
+      <div class="container newsletter-box">
+        <h2>اشترك في نشرتنا الوردية 💌</h2>
+        <p>احصل على أحدث الخصومات والعروض الرسمية للحلويات والماتشا الموسمية مباشرة عبر بريدك.</p>
+        <form class="newsletter-form" action="#" method="POST">
+          <input type="email" placeholder="أدخل بريدك الإلكتروني..." aria-label="البريد الإلكتروني للنشرة البريدية" required>
+          <button type="submit">اشتراك</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+         17. FOOTER
+         ========================================== -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-col">
+          <h4>Sakura Sweets Café</h4>
+          <p>مقهى حلويات يابانية مستوحى من أزهار الساكورا اليابانية ورائحة الماتشا الأصيلة. مكانك الهادئ للعمل والدراسة والاسترخاء.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon" aria-label="Instagram">📸</a>
+            <a href="#" class="social-icon" aria-label="TikTok">🎵</a>
+            <a href="#" class="social-icon" aria-label="X">🐦</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>روابط سريعة</h4>
+          <ul>
+            <li><a href="#hero">الرئيسية</a></li>
+            <li><a href="#about">قصتنا</a></li>
+            <li><a href="#menu">قائمة الحلويات</a></li>
+            <li><a href="#bento">صندوق البينتو</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>معلومات التواصل</h4>
+          <ul>
+            <li>📍 الرياض، حي الربيع</li>
+            <li>📞 0500000000</li>
+            <li>✉️ hello@sakurasweets.com</li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>سياسات وتراخيص</h4>
+          <ul>
+            <li><a href="#">سياسة الخصوصية</a></li>
+            <li><a href="#">شروط الخدمة</a></li>
+            <li><a href="#">مشروع .... 2026</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Sakura Sweets Café. جميع الحقوق محفوظة | مشروع ويب متكامل باستخدام .</p>
+      </div>
+    </div>
+  </footer>
+  <script src="cart.js"></script>
+</body>
+</html>
